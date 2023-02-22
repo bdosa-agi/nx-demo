@@ -51,5 +51,5 @@
       }
     }
   },
-  "defaultProject": "nx-demo"
+  "defaultProject": "stateful"
 }
