@@ -1,6 +1,6 @@
 {
   "name": "@bdosa-agi/ui-components",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   }
