@@ -1,53 +1,41 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import styles from './app.module.scss';
-import NxWelcome from './nx-welcome';
+import { ButtonComponent } from '@bdosa-agi/ui-components';
+import { InputComponent } from '../../../../libs/ui-components/src/lib/input.component';
+import { useState } from 'react';
 
-import { Route, Routes, Link } from 'react-router-dom';
+const localStorageKey = 'userName';
 
-export function App() {
-  return (
-    <>
-      <NxWelcome title="stateful" />
-      <div />
+export default () => {
+  const [inputUserName, setInputUserName] = useState('');
 
-      {/* START: routes */}
-      {/* These routes and navigation have been generated for you */}
-      {/* Feel free to move and update them to fit your needs */}
-      <br />
-      <hr />
-      <br />
-      <div role="navigation">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/page-2">Page 2</Link>
-          </li>
-        </ul>
-      </div>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div>
-              This is the generated root route.{' '}
-              <Link to="/page-2">Click here for page 2.</Link>
-            </div>
-          }
-        />
-        <Route
-          path="/page-2"
-          element={
-            <div>
-              <Link to="/">Click here to go back to root page.</Link>
-            </div>
-          }
-        />
-      </Routes>
-      {/* END: routes */}
-    </>
+  const [storedUserName, setStoredUserName] = useState(
+    localStorage.getItem(localStorageKey) ?? ''
   );
-}
 
-export default App;
+  const login = () => {
+    localStorage.setItem(localStorageKey, inputUserName);
+    setStoredUserName(inputUserName);
+  };
+
+  const logout = () => {
+    localStorage.removeItem(localStorageKey);
+    setStoredUserName('');
+  };
+
+  return (
+    <div className="p-5">
+      {storedUserName ? (
+        <>
+          <div className="mr-4 inline">{storedUserName}</div>
+          <ButtonComponent label="logout" onClick={() => logout()} />
+        </>
+      ) : (
+        <>
+          <div className="mr-4 inline">
+            <ButtonComponent label="log in as" onClick={() => login()} />
+          </div>
+          <InputComponent label="user name" onChange={setInputUserName} />
+        </>
+      )}
+    </div>
+  );
+};

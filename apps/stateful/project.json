@@ -19,7 +19,8 @@
         "assets": ["apps/stateful/src/favicon.ico", "apps/stateful/src/assets"],
         "styles": ["apps/stateful/src/styles.scss"],
         "scripts": [],
-        "webpackConfig": "@nrwl/react/plugins/webpack"
+        "webpackConfig": "@nrwl/react/plugins/webpack",
+        "postcssConfig": "apps/stateful/postcss.config.js"
       },
       "configurations": {
         "development": {
