@@ -1,5 +1,5 @@
 import { ButtonComponent } from '@bdosa-agi/ui-components';
-import { InputComponent } from '../../../../libs/ui-components/src/lib/input.component';
+import { InputComponent } from '@bdosa-agi/ui-components';
 import { useState } from 'react';
 
 const localStorageKey = 'userName';
